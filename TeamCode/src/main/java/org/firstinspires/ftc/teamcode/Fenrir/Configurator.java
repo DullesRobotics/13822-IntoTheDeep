@@ -18,7 +18,16 @@ public class Configurator {
                 driveTrainMotors[0],
                 driveTrainMotors[1],
                 driveTrainMotors[2],
-                driveTrainMotors[3]
+                driveTrainMotors[3],
+                new Motor(robot, "LINSLIDE", LINEARSLIDE, false),
+                new Servo(robot, "LPIVOT", LEFT_SERVO_PIVOT),
+                new Servo(robot, "RPIVOT", RIGHT_SERVO_PIVOT),
+                new Servo(robot, "LEXTEND", LEFT_SERVO_EXTEND),
+                new Servo(robot, "REXTEND", RIGHT_SERVO_EXTEND),
+                // "This is a bucket"
+                // "Dear God"
+                // "Theres more...."
+                new Servo(robot, "BUCKET", BUCKET)
         });
 
     }
