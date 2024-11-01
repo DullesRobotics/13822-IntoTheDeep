@@ -63,4 +63,23 @@ public class ControlCenterTeleOp {
         }
     }
 
+    public static void input(Robot r, Controller ctrl){
+        Motor leftI = r.getMotor("LINPUT");
+        Motor rightI = r.getMotor("RINPUT");
+        while(r.op().opModeIsActive()){
+            if(ctrl.rightBumper()){
+                leftI.get().setPower(0.5);
+                rightI.get().setPower(0.5);
+            }
+            else if(ctrl.leftBumper()){
+                leftI.get().setPower(-0.5);
+                rightI.get().setPower(-0.5);
+            }
+            else{
+                leftI.get().setPower(0);
+                rightI.get().setPower(0);
+            }
+        }
+    }
+
 }

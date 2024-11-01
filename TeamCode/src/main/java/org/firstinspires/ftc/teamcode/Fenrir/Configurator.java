@@ -10,6 +10,8 @@ import org.firstinspires.ftc.teamcode.RobotManager.Robot;
 
 import static org.firstinspires.ftc.teamcode.Hardware.ComponentArea.*;
 
+import android.text.InputType;
+
 public class Configurator {
     public static HardwareComponent[] getHardware(Robot robot){
         HardwareComponent[] driveTrainMotors = getDriveTrainMotors(robot);
@@ -20,6 +22,8 @@ public class Configurator {
                 driveTrainMotors[2],
                 driveTrainMotors[3],
                 new Motor(robot, "LINSLIDE", LINEARSLIDE, false),
+                new Motor(robot, "RINPUT", INPUT_RIGHT, false),
+                new Motor(robot, "LINPUT", INPUT_LEFT, false),
                 new Servo(robot, "LPIVOT", LEFT_SERVO_PIVOT),
                 new Servo(robot, "RPIVOT", RIGHT_SERVO_PIVOT),
                 new Servo(robot, "LEXTEND", LEFT_SERVO_EXTEND),

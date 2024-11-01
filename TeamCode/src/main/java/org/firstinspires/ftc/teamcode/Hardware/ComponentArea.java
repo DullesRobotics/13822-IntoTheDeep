@@ -9,5 +9,7 @@ public enum ComponentArea {
     LEFT_SERVO_EXTEND,
     RIGHT_SERVO_EXTEND,
     BUCKET,
-    LINEARSLIDE
+    LINEARSLIDE,
+    INPUT_RIGHT,
+    INPUT_LEFT
 }
