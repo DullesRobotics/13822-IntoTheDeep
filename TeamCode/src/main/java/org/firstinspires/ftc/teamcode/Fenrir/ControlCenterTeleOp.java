@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 public class ControlCenterTeleOp {
         public static double ogPivotPos = 0.0, pivotPos = 0.5;
         public static double ogExtendPos = 0.0, ExtendPos = 0.3;
-        public static double linearBottom = 0.0, linearMid = 0.3, linearTop = 0.5;
+        public static double linearBottom = 0.0, linearMid = 0.3, linearTop = 0.4;
         public static double bucketdrop = 0.4, bucketOg = 0.0;
 
     public static void arm(Robot r, Controller ctrl){
@@ -56,9 +56,10 @@ public class ControlCenterTeleOp {
         bucket.setPosition(bucketOg);
         while(r.op().opModeIsActive()){
             if(ctrl.leftTrigger() > 0) linear.get().setPower(linearTop * ctrl.leftTrigger());
+            if(ctrl.rightTrigger() > 0) linear.get().setPower(-linearTop * ctrl.leftTrigger());
             else linear.get().setPower(linearBottom);
 
-            if(ctrl.rightTrigger() > 0) bucket.setPosition(bucketdrop);
+            if(ctrl.rightBumper()) bucket.setPosition(bucketdrop);
             else bucket.setPosition(bucketOg);
         }
     }
@@ -67,13 +68,9 @@ public class ControlCenterTeleOp {
         Motor leftI = r.getMotor("LINPUT");
         Motor rightI = r.getMotor("RINPUT");
         while(r.op().opModeIsActive()){
-            if(ctrl.rightBumper()){
+            if(ctrl.leftBumper()){
                 leftI.get().setPower(0.5);
                 rightI.get().setPower(0.5);
-            }
-            else if(ctrl.leftBumper()){
-                leftI.get().setPower(-0.5);
-                rightI.get().setPower(-0.5);
             }
             else{
                 leftI.get().setPower(0);
