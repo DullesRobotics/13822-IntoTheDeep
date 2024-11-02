@@ -10,6 +10,7 @@ public enum ComponentArea {
     RIGHT_SERVO_EXTEND,
     BUCKET,
     LINEARSLIDE,
-    INPUT_RIGHT,
-    INPUT_LEFT
+    HANG_RIGHT,
+    HANG_LEFT,
+    INPUT
 }

@@ -16,6 +16,7 @@ public class ControlCenterTeleOp {
         public static double ogExtendPos = 0.0, ExtendPos = 0.3;
         public static double linearBottom = 0.0, linearMid = 0.3, linearTop = 0.4;
         public static double bucketdrop = 0.4, bucketOg = 0.0;
+        public static double hangPwr = 0.3, inputPwr;
 
     public static void arm(Robot r, Controller ctrl){
                 Servo leftPivot = r.getServo("LPIVOT");
@@ -59,23 +60,35 @@ public class ControlCenterTeleOp {
             if(ctrl.rightTrigger() > 0) linear.get().setPower(-linearTop * ctrl.leftTrigger());
             else linear.get().setPower(linearBottom);
 
-            if(ctrl.rightBumper()) bucket.setPosition(bucketdrop);
+            if(ctrl.buttonUp()) bucket.setPosition(bucketdrop);
             else bucket.setPosition(bucketOg);
         }
     }
 
-    public static void input(Robot r, Controller ctrl){
-        Motor leftI = r.getMotor("LINPUT");
-        Motor rightI = r.getMotor("RINPUT");
+    public static void hang(Robot r, Controller ctrl){
+        Motor leftH = r.getMotor("LHANG");
+        Motor rightH = r.getMotor("RHANG");
         while(r.op().opModeIsActive()){
             if(ctrl.leftBumper()){
-                leftI.get().setPower(0.5);
-                rightI.get().setPower(0.5);
+                leftH.get().setPower(hangPwr);
+                rightH.get().setPower(hangPwr);
+            }
+            else if(ctrl.rightBumper()){
+                leftH.get().setPower(-hangPwr);
+                rightH.get().setPower(-hangPwr);
             }
             else{
-                leftI.get().setPower(0);
-                rightI.get().setPower(0);
+                leftH.get().setPower(0);
+                rightH.get().setPower(0);
             }
+        }
+    }
+
+    public static void input(Robot r, Controller ctrl){
+        Motor inputM = r.getMotor("INPUT");
+        while(r.op().opModeIsActive()){
+            if(ctrl.buttonX()) inputM.get().setPower(inputPwr);
+            else inputM.get().setPower(0);
         }
     }
 
