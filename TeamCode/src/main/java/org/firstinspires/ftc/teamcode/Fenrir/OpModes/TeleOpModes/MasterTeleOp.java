@@ -19,10 +19,6 @@ public class MasterTeleOp extends LinearOpMode {
         waitForStart();
 
         baseRobot.driveWithController(baseRobot.ctrl1());
-        ControlCenterTeleOp.arm(baseRobot, baseRobot.ctrl2());
-        ControlCenterTeleOp.linearSlide(baseRobot, baseRobot.ctrl2());
-        ControlCenterTeleOp.hang(baseRobot, baseRobot.ctrl2());
-        ControlCenterTeleOp.input(baseRobot, baseRobot.ctrl2());
 
 
 //        while (opModeIsActive())
