@@ -18,7 +18,15 @@ public class Configurator {
                 driveTrainMotors[0],
                 driveTrainMotors[1],
                 driveTrainMotors[2],
-                driveTrainMotors[3]
+                driveTrainMotors[3],
+                new Servo(robot, "LCLAW", LEFT_CLAW),
+                new Servo(robot, "RCLAW", RIGHT_CLAW),
+                new Servo(robot, "REXTEND", RIGHT_EXTEND),
+                new Servo(robot, "LEXTEND", LEFT_EXTEND),
+                new Servo(robot, "RPIVOT", RIGHT_PIVOT),
+                new Servo(robot, "LPIVOT", LEFT_PIVOT),
+                new Motor(robot, "LSLD", LEFT_VSLIDES, false),
+                new Motor(robot, "RSLD", RIGHT_VSLIDES, false)
         });
 
     }
