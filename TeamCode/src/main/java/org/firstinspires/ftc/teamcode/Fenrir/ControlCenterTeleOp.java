@@ -51,6 +51,21 @@ public class ControlCenterTeleOp {
         }
     }
 
-    
+    public static void ARM(Robot r, Controller ctrl){
+        Servo LPivot = r.getServo("LPIVOT");
+        Servo RPivot = r.getServo("RPIVOT");
+        LPivot.setPosition(pivotNorm);
+        RPivot.setPosition(pivotNorm);
+        while (r.op().opModeIsActive()){
+            if(ctrl.buttonY()){
+                LPivot.setPosition(pivotFull);
+                RPivot.setPosition(pivotFull);
+            }
+            else{
+                LPivot.setPosition(pivotNorm);
+                RPivot.setPosition(pivotNorm);
+            }
+        }
+    }
 
 }
