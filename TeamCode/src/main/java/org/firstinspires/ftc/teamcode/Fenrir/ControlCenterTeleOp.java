@@ -20,7 +20,7 @@ public class ControlCenterTeleOp {
         Motor LHang = r.getMotor("LSLD");
         Motor RHang = r.getMotor("LSLD");
         while(r.op().opModeIsActive()){
-//            if()
+            if(ctrl.leftTrigger() > 1)
         }
     }
 
