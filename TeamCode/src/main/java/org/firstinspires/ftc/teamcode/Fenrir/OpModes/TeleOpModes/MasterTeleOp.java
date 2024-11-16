@@ -21,6 +21,7 @@ public class MasterTeleOp extends LinearOpMode {
         baseRobot.driveWithController(baseRobot.ctrl1());
         ControlCenterTeleOp.VSHANG(baseRobot,baseRobot.ctrl2());
         ControlCenterTeleOp.CLAW(baseRobot,baseRobot.ctrl2());
+        ControlCenterTeleOp.ARM(baseRobot,baseRobot.ctrl2());
 
 
         while (opModeIsActive())
