@@ -4,13 +4,13 @@ public enum ComponentArea {
 
     DRIVE_TRAIN,
     IMU,
-    LEFT_CLAW,
-    RIGHT_CLAW,
-    LEFT_PIVOT,
-    LEFT_EXTEND,
-    RIGHT_PIVOT,
-    RIGHT_EXTEND,
-    LEFT_VSLIDES,
-    RIGHT_VSLIDES
+    LCLAW,
+    RCLAW,
+    LPIVOT,
+    //LEFT_EXTEND,
+    RPIVOT,
+    //RIGHT_EXTEND,
+    LSLD,
+    RSLD
 
 }

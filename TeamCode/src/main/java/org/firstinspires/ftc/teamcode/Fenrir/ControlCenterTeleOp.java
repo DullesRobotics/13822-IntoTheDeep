@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Fenrir;
 
 import com.acmerobotics.dashboard.config.Config;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Hardware.Controller;
@@ -19,7 +20,7 @@ public class ControlCenterTeleOp {
 
     public static void VSHANG(Robot r, Controller ctrl){
         Motor LHang = r.getMotor("LSLD");
-        Motor RHang = r.getMotor("LSLD");
+        Motor RHang = r.getMotor("RSLD");
         LHang.get().setPower(0.0);
         RHang.get().setPower(0.0);
         while(r.op().opModeIsActive()){

@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.RobotManager.MechanumDriveTrain;
 import org.firstinspires.ftc.teamcode.Fenrir.Configurator;
+import org.firstinspires.ftc.teamcode.Fenrir.ControlCenterTeleOp;
 
 @TeleOp
 public class MecDriveTest extends LinearOpMode {
@@ -14,11 +15,13 @@ public class MecDriveTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException{
         robot = new MechanumDriveTrain(this);
-        robot.addHardware(Configurator.getDriveTrainMotors(robot));
+        robot.addHardware(Configurator.getHardware(robot));
 
         waitForStart();
 
         robot.driveWithController(robot.ctrl1());
+        ControlCenterTeleOp.VSHANG(robot, robot.ctrl2());
+
 
 
         while (opModeIsActive())
