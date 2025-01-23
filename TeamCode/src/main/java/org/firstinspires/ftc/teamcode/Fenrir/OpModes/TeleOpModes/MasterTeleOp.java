@@ -22,10 +22,15 @@ public class MasterTeleOp extends LinearOpMode {
     private DcMotor rf = null;
     private Servo rC = null;
     private Servo lC = null;
-    private Servo lP = null;
+//    private Servo lP = null;
 //    private Servo rP = null;
+
+    private DcMotor rP = null;
+    private DcMotor lP = null;
+
     private DcMotor LH = null;
     private DcMotor RH = null;
+    private Servo bucket = null;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -42,8 +47,10 @@ public class MasterTeleOp extends LinearOpMode {
 
         double VSPwrUp = 0.9, VSPwrDown = 0.6, VSPwrNone = 0.0;
         double clawClose = 0.2, clawOpen = 0.5;
-        double pivotNorm = 0.1, pivotFull = 0.6;
+//        double pivotNorm = 0.1, pivotFull = 0.6;
+        double pivot = 0.4, noPivot = 0;
         double extendNorm = 0, extendFull = 0.4;
+        double bucketDwn = 0, bucketUp = 0.5;
 
 
         rf = hardwareMap.dcMotor.get("FRM");
@@ -52,10 +59,13 @@ public class MasterTeleOp extends LinearOpMode {
         lb = hardwareMap.dcMotor.get("BLM");
         LH = hardwareMap.dcMotor.get("LSLD");
         RH = hardwareMap.dcMotor.get("RSLD");
-//        rC = hardwareMap.get(Servo.class, "RCLAW");
-//        lC = hardwareMap.get(Servo.class, "LCLAW");
+        rC = hardwareMap.get(Servo.class, "RCLAW");
+        lC = hardwareMap.get(Servo.class, "LCLAW");
 //        rP = hardwareMap.get(Servo.class, "RPIVOT");
 //        lP = hardwareMap.get(Servo.class, "LPIVOT");
+        rP = hardwareMap.dcMotor.get("RPIVOT");
+        rP = hardwareMap.dcMotor.get("LPIVOT");
+        bucket = hardwareMap.get(Servo.class, "BUCKET");
        // lb.setDirection(DcMotorSimple.Direction.REVERSE);
        // lf.setDirection(DcMotorSimple.Direction.REVERSE);
         waitForStart();
@@ -80,14 +90,14 @@ public class MasterTeleOp extends LinearOpMode {
             rf.setPower(frontRightPower);
             rb.setPower(backRightPower);
 
-//            if (gamepad2.x) {
-//                lC.setPosition(clawOpen);
-//                rC.setPosition(clawOpen);
-//            } else {
-//                lC.setPosition(clawClose);
-//                rC.setPosition(clawClose);
-//            }
-//
+            if (gamepad2.x) {
+                lC.setPosition(clawOpen);
+                rC.setPosition(clawOpen);
+            } else {
+                lC.setPosition(clawClose);
+                rC.setPosition(clawClose);
+            }
+
             if(gamepad2.left_trigger >= 1){
                 LH.setPower(VSPwrUp);
                 RH.setPower(VSPwrUp);
@@ -101,14 +111,18 @@ public class MasterTeleOp extends LinearOpMode {
                 RH.setPower(VSPwrNone);
             }
 
-//            if(gamepad2.y){
-//                lP.setPosition(pivotFull);
-////                rP.setPosition(pivotFull);
-//            }
-//            else{
-//                lP.setPosition(pivotNorm);
-////                rP.setPosition(pivotNorm);
-//            }
+            if(gamepad2.y){
+                lP.setPower(pivot);
+                rP.setPower(pivot);
+            }
+            else{
+                lP.setPower(noPivot);
+                rP.setPower(noPivot);
+            }
+            if(gamepad1.x){
+                bucket.setPosition(bucketUp);
+            }
+            else bucket.setPosition(bucketDwn);
 
             waitForStart();
 
